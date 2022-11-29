@@ -7,11 +7,13 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.OptionalInt;
 
 @Repository
 public interface RAndVRepository extends JpaRepository<RAndV, String> {
 
-    @Query("SELECT r FROM RAndV r WHERE r.reviewId = :reviewId")
+    @Query("SELECT r.numVote FROM RAndV r WHERE r.reviewId = :reviewId")
     int getTotalVotesByReview(@Param("reviewId") String reviewId);
 
     @Query("SELECT r FROM RAndV r WHERE r.reviewId = :reviewId")

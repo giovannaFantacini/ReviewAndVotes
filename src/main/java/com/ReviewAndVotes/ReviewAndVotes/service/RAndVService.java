@@ -16,7 +16,11 @@ public class RAndVService {
     private RAndVRepository repository;
 
     public int getTotalVotesByReview(String reviewId) {
-        return repository.getTotalVotesByReview(reviewId).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,"Product Not Found"));
+        RAndV rAndV = repository.findReview(reviewId);
+        if(rAndV ==  null ){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND,"Review not Voted");
+        }
+        return repository.getTotalVotesByReview(reviewId);
     }
 
     public void AddVote(Vote vote) {
