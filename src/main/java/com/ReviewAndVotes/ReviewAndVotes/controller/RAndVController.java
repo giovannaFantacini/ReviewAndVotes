@@ -21,6 +21,4 @@ public class RAndVController {
         return service.getTotalVotesByReview(reviewId);
     }
 
-
-
 }

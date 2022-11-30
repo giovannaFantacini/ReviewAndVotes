@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.util.UUID;
 
 @Entity
 @Table(name = "voteByReview")
@@ -16,6 +17,7 @@ public class RAndV {
     private int numVote;
 
     @Id
+
     @Column(name = "ID", nullable = false, length = 36)
     private String id;
 
@@ -50,6 +52,9 @@ public class RAndV {
     public RAndV(String reviewId, int vote) {
         this.reviewId = reviewId;
         this.numVote = vote;
+        UUID Uuid = UUID.randomUUID();
+        String id = Uuid.toString();
+        this.id = id;
     }
 
 }

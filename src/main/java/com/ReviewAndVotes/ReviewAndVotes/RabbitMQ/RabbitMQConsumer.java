@@ -14,9 +14,6 @@ import org.springframework.stereotype.Service;
 public class RabbitMQConsumer {
 
     @Autowired
-    private RAndVRepository rAndVRepository;
-
-    @Autowired
     private RAndVService service;
 
     @RabbitListener(queues = "#{autoDeleteQueue.name}")
